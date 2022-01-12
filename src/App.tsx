@@ -1,26 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { VFC } from 'react';
+import { Routes, Route } from 'react-router-dom';
 
-function App() {
+import Home from './components/Home';
+import ModReq from './components/ModReq';
+import Board from './components/Board';
+
+const App: VFC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="modreq" element={<ModReq />} />
+      <Route path="board" element={<Board />} />
+    </Routes>
   );
-}
+};
 
 export default App;
