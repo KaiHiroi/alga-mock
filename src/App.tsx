@@ -1,9 +1,9 @@
 import { VFC } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import Home from './components/Home';
-import ModReq from './components/ModReq';
-import Board from './components/Board';
+import Home from './components/pages/Home';
+import ModReq from './components/pages/ModReq';
+import Board from './components/pages/Board';
 
 const App: VFC = () => {
   return (

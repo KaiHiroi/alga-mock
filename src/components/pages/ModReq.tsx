@@ -1,28 +1,20 @@
 import { VFC } from 'react';
 import styled from 'styled-components';
 
-import ProgressBar from './ProgressBar';
-import ProblemText from './ProblemText';
-import ProblemSolutions from './ProblemSolutions';
-import ButtonDislike from './buttons/ButtonDisagree';
-import ButtonLike from './buttons/ButtonAgree';
-import ProblemFooter from './ProblemFooter';
+import ProgressBar from '../ProgressBar';
+import ProblemText from '../ProblemText';
+import ProblemSolutions from '../ProblemSolutions';
+import {
+  RedCrossCircleButton as DisagreeButton,
+  GreenHeartCircleButton as AgreeButton,
+} from '../buttons';
+import AppFooter from '../AppFooter';
 
 const ModReqWrapper = styled.div`
   height: 100vh;
   text-align: center;
   display: flex;
   flex-direction: column;
-`;
-const FooterWrapper = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  background-color: white;
-`;
-const VoteWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  margin: 2rem;
 `;
 const ProblemTextWrapper = styled.div`
   text-align: left;
@@ -42,8 +34,14 @@ const SolutionCards = styled.div`
   filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03))
     drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
 `;
+const VoteWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 2rem;
+  gap: 0 6rem;
+`;
 
-const Board: VFC = () => {
+const ModReq: VFC = () => {
   // Dummy params
   const progress = 40;
   const problemId = 1;
@@ -58,14 +56,12 @@ const Board: VFC = () => {
         <ProblemSolutions problemId={problemId} />
       </SolutionCards>
       <VoteWrapper>
-        <ButtonDislike />
-        <ButtonLike />
+        <DisagreeButton />
+        <AgreeButton />
       </VoteWrapper>
-      <FooterWrapper>
-        <ProblemFooter />
-      </FooterWrapper>
+      <AppFooter />
     </ModReqWrapper>
   );
 };
 
-export default Board;
+export default ModReq;
