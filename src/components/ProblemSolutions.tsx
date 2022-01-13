@@ -1,4 +1,5 @@
 import { VFC } from 'react';
+import styled from 'styled-components';
 import { Problems } from '../types/Types';
 
 type Props = {
@@ -39,14 +40,23 @@ const ProblemSolutions: VFC<Props> = (props) => {
     countLike: 0,
   };
 
-  console.log(currentSolution);
-
+  const SolutionId = styled.div`
+    border-bottom: 2px solid lightgray;
+    color: gray;
+  `;
+  const SolutionMain = styled.div`
+    border-bottom: 2px solid lightgray;
+    flex: 0 0 1;
+    overflow-y: auto;
+    font-size: 1.1rem;
+  `;
+  const SolutionStatus = styled.div`
+    color: gray;
+  `;
   return (
     <>
-      <div className="border-b-2 border-solid">
-        ソリューション{currentSolution.id}
-      </div>
-      <div className="border-b-2 border-solid flex-1 overflow-y-auto">
+      <SolutionId>ソリューション{currentSolution.id}</SolutionId>
+      <SolutionMain>
         <div>
           <div>追加するルール</div>
           {currentSolution.text}
@@ -85,8 +95,8 @@ const ProblemSolutions: VFC<Props> = (props) => {
           <br />
           aaa
         </div>
-      </div>
-      <div>この解決策をベースに修正提案</div>
+      </SolutionMain>
+      <SolutionStatus>この解決策をベースに修正提案</SolutionStatus>
     </>
   );
 };

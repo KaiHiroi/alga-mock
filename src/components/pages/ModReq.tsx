@@ -1,7 +1,7 @@
 import { VFC } from 'react';
 import styled from 'styled-components';
 
-import ProgressBar from '../ProgressBar';
+import ProgressBar from '../utils/ProgressBar';
 import ProblemText from '../ProblemText';
 import ProblemSolutions from '../ProblemSolutions';
 import {
@@ -16,17 +16,14 @@ const ModReqWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const ProblemTextWrapper = styled.div`
-  text-align: left;
-  margin: 0 1rem;
-  display: flex;
-  flex-direction: column;
-  background-color: gray;
+const ProgressBarWrapper = styled.div`
+  margin: 1rem;
 `;
+const ProblemTextWrapper = styled.div``;
 const SolutionCards = styled.div`
   flex: 1 1 0%;
   padding: 0 1.5rem;
-  margin-top: 1.5rem;
+  margin: 1.5rem;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -48,7 +45,9 @@ const ModReq: VFC = () => {
 
   return (
     <ModReqWrapper>
-      <ProgressBar completed={progress} />
+      <ProgressBarWrapper>
+        <ProgressBar completed={progress} />
+      </ProgressBarWrapper>
       <ProblemTextWrapper>
         <ProblemText problemId={problemId} />
       </ProblemTextWrapper>

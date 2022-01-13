@@ -1,4 +1,5 @@
 import { VFC } from 'react';
+import styled from 'styled-components';
 
 type Problems = {
   id: number;
@@ -25,17 +26,35 @@ const ProblemText: VFC<Props> = (props) => {
     },
   ];
 
-  const currentProblem: Problems | undefined = problems.find(
+  const currentProblem: Problems = problems.find(
     (problem) => problem.id === problemId.problemId,
-  );
+  ) ?? {
+    id: 0,
+    text: 'no problem',
+    solutions: [],
+    countLike: 0,
+    countUnlike: 0,
+  };
 
+  const ProblemTextWrapper = styled.div`
+    margin: 1rem;
+  `;
+  const InnerWrapper = styled.div`
+    text-align: left;
+    width: fit-content;
+    margin: 0 auto;
+    font-size: 1.1rem;
+  `;
+  const Text = styled.div`
+    padding-left: 1rem;
+  `;
   return (
-    <>
-      <div>問題:</div>
-      <p>
-        {currentProblem === undefined ? 'non problem' : currentProblem.text}
-      </p>
-    </>
+    <ProblemTextWrapper>
+      <InnerWrapper>
+        <div>問題:</div>
+        <Text>{currentProblem.text}</Text>
+      </InnerWrapper>
+    </ProblemTextWrapper>
   );
 };
 
