@@ -1,6 +1,8 @@
 import { VFC } from 'react';
 import styled from 'styled-components';
 import { Problems } from '../types/Types';
+import { GiCycle } from 'react-icons/gi';
+import { FaPen } from 'react-icons/fa';
 
 type Props = {
   problemId: number;
@@ -41,62 +43,88 @@ const ProblemSolutions: VFC<Props> = (props) => {
   };
 
   const SolutionId = styled.div`
-    border-bottom: 2px solid lightgray;
     color: gray;
+    padding: 0.25rem 0;
+    box-shadow: 0 2px 5px lightgray;
   `;
   const SolutionMain = styled.div`
-    border-bottom: 2px solid lightgray;
     flex: 0 0 1;
     overflow-y: auto;
     font-size: 1.1rem;
   `;
   const SolutionStatus = styled.div`
     color: gray;
+    padding: 0.25rem 0;
+    box-shadow: 0 -2px 5px lightgray;
+  `;
+  const StyledCycle = styled(GiCycle)`
+    margin-right: 0.3rem;
+  `;
+  const StyledPen = styled(FaPen)`
+    margin-right: 0.3rem;
+  `;
+  const InnerWrapper = styled.div`
+    text-align: left;
+    width: fit-content;
+    margin: 0 auto 3rem;
+  `;
+  const Heading = styled.h3`
+    color: #555;
+  `;
+  const Text = styled.div`
+    padding-left: 1rem;
+    color: #333;
   `;
   return (
     <>
       <SolutionId>ソリューション{currentSolution.id}</SolutionId>
       <SolutionMain>
-        <div>
-          <div>追加するルール</div>
-          {currentSolution.text}
-        </div>
-        <div>
-          <div>部会と予算</div>
-          {currentSolution.text}
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          aaa
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          aaa
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          aaa
-        </div>
+        <InnerWrapper>
+          <Heading>追加するルール</Heading>
+          <Text>{currentSolution.text}</Text>
+        </InnerWrapper>
+        <InnerWrapper>
+          <Heading>部会と予算</Heading>
+          <Text>
+            {currentSolution.text}
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            aaa
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            aaa
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            aaa
+          </Text>
+        </InnerWrapper>
       </SolutionMain>
-      <SolutionStatus>この解決策をベースに修正提案</SolutionStatus>
+      <SolutionStatus>
+        {/* <StyledCycle /> */}
+        <StyledPen />
+        この解決策をベースに修正提案
+      </SolutionStatus>
     </>
   );
 };

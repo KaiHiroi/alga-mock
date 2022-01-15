@@ -43,15 +43,20 @@ const ProblemText: VFC<Props> = (props) => {
     text-align: left;
     width: fit-content;
     margin: 0 auto;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+  `;
+  const Heading = styled.div`
+    color: #444;
   `;
   const Text = styled.div`
     padding-left: 1rem;
+    color: #444;
   `;
   return (
     <ProblemTextWrapper>
       <InnerWrapper>
-        <div>問題:</div>
+        <Heading>問題:</Heading>
         <Text>{currentProblem.text}</Text>
       </InnerWrapper>
     </ProblemTextWrapper>

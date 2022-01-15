@@ -22,19 +22,20 @@ const ProgressBarWrapper = styled.div`
 const ProblemTextWrapper = styled.div``;
 const SolutionCards = styled.div`
   flex: 1 1 0%;
-  padding: 0 1.5rem;
   margin: 1.5rem;
   background-color: white;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow-y: hidden;
+  overflow-x: visible;
   filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03))
     drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
 `;
 const VoteWrapper = styled.div`
   display: flex;
   justify-content: center;
-  margin: 2rem;
+  margin-top: 0.75rem;
+  margin-bottom: 3rem;
   gap: 0 6rem;
 `;
 
