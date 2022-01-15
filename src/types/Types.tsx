@@ -15,7 +15,8 @@ export type Problems = {
   text: string;
   solutions: {
     id: number;
-    text: string;
+    addingRules: string;
+    subCommitteeAndBudget: string;
     countDislike: number;
     countLike: number;
   }[];

@@ -1,15 +1,25 @@
 import { VFC } from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { RoundedButton } from './buttons';
 
 const Header: VFC = () => {
+  const HeaderWrapper = styled.header`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+  `;
+  const Nav = styled.nav`
+    display: flex;
+  `;
   return (
-    <div className="flex justify-between">
-      <div>Alga</div>
-      <div>
-        <Link to="/">HOME</Link>
-        <Link to="modreq">App</Link>
-      </div>
-    </div>
+    <HeaderWrapper>
+      <div>Alga LOGO</div>
+      <Nav>
+        <RoundedButton _text="Launch App" _linkTo="/modreq" />
+      </Nav>
+    </HeaderWrapper>
   );
 };
 

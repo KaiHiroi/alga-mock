@@ -8,7 +8,7 @@ const ProgressBar: VFC<Props> = (props) => {
   const { completed } = props;
 
   const containerStyles = {
-    height: 5,
+    height: 4,
     width: '100%',
     backgroundColor: '#d3d3d3',
     borderRadius: 5,

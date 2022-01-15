@@ -18,7 +18,15 @@ const ProblemSolutions: VFC<Props> = (props) => {
       solutions: [
         {
           id: 1,
-          text: '毎回Zoomに接続しながらboardを使う。',
+          addingRules: '毎回Zoomに接続しながらboardを使う。Sol1',
+          subCommitteeAndBudget: '部会と予算ぶかいとよさん',
+          countDislike: 0,
+          countLike: 0,
+        },
+        {
+          id: 2,
+          addingRules: '毎回Zoomに接続しながらboardを使う。Sol2',
+          subCommitteeAndBudget: '部会と予算ぶかいとよさん',
           countDislike: 0,
           countLike: 0,
         },
@@ -37,14 +45,15 @@ const ProblemSolutions: VFC<Props> = (props) => {
     return solution.id === 1;
   }) ?? {
     id: 0,
-    text: 'solution 0',
+    addingRules: 'solution 0',
+    subCommitteeAndBudget: 'sub-Com & budget',
     countDislike: 0,
     countLike: 0,
   };
 
   const SolutionId = styled.div`
     color: gray;
-    padding: 0.25rem 0;
+    padding: 0.35rem 0;
     box-shadow: 0 2px 5px lightgray;
   `;
   const SolutionMain = styled.div`
@@ -54,7 +63,7 @@ const ProblemSolutions: VFC<Props> = (props) => {
   `;
   const SolutionStatus = styled.div`
     color: gray;
-    padding: 0.25rem 0;
+    padding: 0.3rem 0;
     box-shadow: 0 -2px 5px lightgray;
   `;
   const StyledCycle = styled(GiCycle)`
@@ -66,7 +75,7 @@ const ProblemSolutions: VFC<Props> = (props) => {
   const InnerWrapper = styled.div`
     text-align: left;
     width: fit-content;
-    margin: 0 auto 3rem;
+    margin: 0 auto;
   `;
   const Heading = styled.h3`
     color: #555;
@@ -74,19 +83,20 @@ const ProblemSolutions: VFC<Props> = (props) => {
   const Text = styled.div`
     padding-left: 1rem;
     color: #333;
+    margin-bottom: 3rem;
   `;
   return (
     <>
-      <SolutionId>ソリューション{currentSolution.id}</SolutionId>
+      <SolutionId>
+        ソリューション{currentSolution.id}/{currentProblem.solutions.length}
+      </SolutionId>
       <SolutionMain>
         <InnerWrapper>
           <Heading>追加するルール</Heading>
-          <Text>{currentSolution.text}</Text>
-        </InnerWrapper>
-        <InnerWrapper>
+          <Text>{currentSolution.addingRules}</Text>
           <Heading>部会と予算</Heading>
           <Text>
-            {currentSolution.text}
+            {currentSolution.subCommitteeAndBudget}
             <br />
             <br />
             <br />
