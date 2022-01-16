@@ -8,7 +8,7 @@ import AddSolution from '../AddSolution';
 import AppFooter from '../AppFooter';
 
 import { proposal1 } from '../../data';
-console.log(proposal1);
+
 const solutionExists = () => {
   return proposal1.solutions?.length !== 0;
 };
@@ -36,10 +36,7 @@ const ModReq: VFC = () => {
 };
 
 const Solution: VFC<{ solutionExists: boolean }> = (props) => {
-  if (props.solutionExists) {
-    return <SolutionCard />;
-  }
-  return <AddSolution />;
+  return props.solutionExists ? <SolutionCard /> : <AddSolution />;
 };
 
 export default ModReq;

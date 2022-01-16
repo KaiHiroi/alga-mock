@@ -6,7 +6,7 @@ const date2 = new Date(2022, 0, 1);
 
 const member1: Member = {
   id: 1,
-  address: '0xMEMBER1_dfkjhu4',
+  address: 'ワークショップ部会',
 };
 const member2: Member = {
   id: 2,
@@ -14,7 +14,7 @@ const member2: Member = {
 };
 
 const solution1_1: Solution = {
-  law: 'sol1-1 law',
+  law: '隔週ワークショップを開催する。\n\n予算は1回2500円で、模造紙、ペン、付箋などをなくなり次第買い足す形で用意する。\n\nワークショップ部会を新設し予算管理をする。board機能と併用し、リモート参加と同期する。',
   to: 1,
   since: date1,
   until: date2,
@@ -22,12 +22,12 @@ const solution1_1: Solution = {
   members: [member1, member2],
 };
 const solution1_2: Solution = {
-  law: 'sol1-2 law',
+  law: '毎回Zoomに接続しながらboardを使う。',
   to: 23,
   since: date1,
   until: date2,
-  amount: 100,
-  members: [member2],
+  amount: 0,
+  members: [],
 };
 
 const problem1: Problem = {

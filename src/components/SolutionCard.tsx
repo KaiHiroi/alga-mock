@@ -12,7 +12,7 @@ const Solution: VFC = () => {
   return (
     <SolutionWrapper>
       <SolutionCards>
-        <ProblemSolutionsCard problemId={proposal1.problem.id} />
+        <ProblemSolutionsCard solutionId={0} />
       </SolutionCards>
       <VoteWrapper>
         <CircleButton _icon={<ImCross />} _iconColor="#e55" />
@@ -30,7 +30,6 @@ const SolutionWrapper = styled.div`
 const SolutionCards = styled.div`
   flex: 1 1 0%;
   margin: 1rem 1.5rem 2rem;
-  background-color: white;
   position: relative;
 `;
 const VoteWrapper = styled.div`
