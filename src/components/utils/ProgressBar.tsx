@@ -1,34 +1,28 @@
 import { VFC } from 'react';
-
-type Props = {
-  completed: number;
-};
+import styled from 'styled-components';
+import { ProgressBarProps as Props } from '../../types/Types';
 
 const ProgressBar: VFC<Props> = (props) => {
-  const { completed } = props;
-
-  const containerStyles = {
-    height: 4,
-    width: '100%',
-    backgroundColor: '#d3d3d3',
-    borderRadius: 5,
-  };
-
-  const barStyles = {
-    height: '100%',
-    width: `${completed}%`,
-    backgroundColor: '#aaa',
-    borderRadius: 'inherit',
-    transition: 'width 1s ease-in-out',
-  };
-
   return (
-    <div className="mx-3 my-2">
-      <div style={containerStyles}>
-        <div style={barStyles}></div>
-      </div>
-    </div>
+    <Wrapper margin={props.margin}>
+      <Bar completed={props.completed} />
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div<{ margin: number }>`
+  height: 4px;
+  background-color: #d3d3d3;
+  border-radius: 4px;
+  margin: ${(props) => props.margin}rem;
+`;
+
+const Bar = styled.div<{ completed: number }>`
+  height: 100%;
+  width: ${(props) => props.completed}%;
+  background-color: #aaa;
+  border-radius: inherit;
+  transition: width 1s ease-in-out;
+`;
 
 export default ProgressBar;

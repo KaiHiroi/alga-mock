@@ -1,7 +1,7 @@
 import { VFC } from 'react';
 import styled from 'styled-components';
 
-import ProgressBar from '../utils/ProgressBar';
+import _ProgressBar from '../utils/ProgressBar';
 import ProblemText from '../ProblemText';
 import ProblemSolutionsCard from '../ProblemSolutionsCard';
 import {
@@ -11,15 +11,15 @@ import {
 import AppFooter from '../AppFooter';
 
 const ModReqWrapper = styled.div`
+  width: 100%;
   height: 100vh;
   text-align: center;
   display: flex;
   flex-direction: column;
 `;
-const ProgressBarWrapper = styled.div`
+const ProgressBar = styled(_ProgressBar)`
   margin: 1rem;
 `;
-const ProblemTextWrapper = styled.div``;
 const SolutionCards = styled.div`
   flex: 1 1 0%;
   margin: 1rem 1.5rem 2rem;
@@ -40,17 +40,13 @@ const VoteWrapper = styled.div`
 
 const ModReq: VFC = () => {
   // Dummy params
-  const progress = 40;
+  const progress = 35;
   const problemId = 1;
 
   return (
     <ModReqWrapper>
-      <ProgressBarWrapper>
-        <ProgressBar completed={progress} />
-      </ProgressBarWrapper>
-      <ProblemTextWrapper>
-        <ProblemText problemId={problemId} />
-      </ProblemTextWrapper>
+      <ProgressBar completed={progress} margin={1} />
+      <ProblemText problemId={problemId} />
       <SolutionCards>
         <ProblemSolutionsCard problemId={problemId} />
       </SolutionCards>
