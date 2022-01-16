@@ -1,14 +1,17 @@
 import { VFC } from 'react';
 import styled from 'styled-components';
 
-import _ProgressBar from '../utils/ProgressBar';
+import ProgressBar from '../utils/ProgressBar';
 import ProblemText from '../ProblemText';
-import ProblemSolutionsCard from '../ProblemSolutionsCard';
-import {
-  RedCrossCircleButton as DisagreeButton,
-  GreenHeartCircleButton as AgreeButton,
-} from '../buttons';
+import SolutionCard from '../SolutionCard';
+import AddSolution from '../AddSolution';
 import AppFooter from '../AppFooter';
+
+import { proposal1 } from '../../data';
+console.log(proposal1);
+const solutionExists = () => {
+  return proposal1.solutions?.length !== 0;
+};
 
 const ModReqWrapper = styled.div`
   width: 100%;
@@ -17,46 +20,26 @@ const ModReqWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const ProgressBar = styled(_ProgressBar)`
-  margin: 1rem;
-`;
-const SolutionCards = styled.div`
-  flex: 1 1 0%;
-  margin: 1rem 1.5rem 2rem;
-  background-color: white;
-  /* display: flex;
-  flex-direction: column; */
-  /* overflow-y: hidden; */
-  /* filter: drop-shadow(0 8px 5px rgb(0 0 0 / 0.8)); */
-  position: relative;
-`;
-const VoteWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  padding-top: 1rem;
-  padding-bottom: 3rem;
-  gap: 0 6rem;
-`;
 
 const ModReq: VFC = () => {
   // Dummy params
   const progress = 35;
-  const problemId = 1;
 
   return (
     <ModReqWrapper>
       <ProgressBar completed={progress} margin={1} />
-      <ProblemText problemId={problemId} />
-      <SolutionCards>
-        <ProblemSolutionsCard problemId={problemId} />
-      </SolutionCards>
-      <VoteWrapper>
-        <DisagreeButton />
-        <AgreeButton />
-      </VoteWrapper>
+      <ProblemText problem={proposal1.problem} margin={0.75} />
+      <Solution solutionExists={solutionExists()} />
       <AppFooter />
     </ModReqWrapper>
   );
+};
+
+const Solution: VFC<{ solutionExists: boolean }> = (props) => {
+  if (props.solutionExists) {
+    return <SolutionCard />;
+  }
+  return <AddSolution />;
 };
 
 export default ModReq;

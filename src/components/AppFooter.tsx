@@ -29,14 +29,14 @@ const AppFooter: VFC = () => {
         _text="modreq"
         _linkTo="/modreq"
         _isActive={matchPath('/modreq')}
-        _Icon={<VscDiff />}
+        _icon={<VscDiff />}
       />
       <Divider />
       <RoundedButton
         _text="board"
         _linkTo="/board"
         _isActive={matchPath('/board')}
-        _Icon={<BsClipboard />}
+        _icon={<BsClipboard />}
       />
     </Footer>
   );

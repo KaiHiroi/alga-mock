@@ -8,7 +8,7 @@ enum PropType {
   SUB,
 }
 export type Proposal = {
-  problem: string;
+  problem: Problem;
   harm?: string;
   cause?: string;
   solutions?: Solution[];
@@ -19,15 +19,15 @@ export type Solution = {
   since?: Date;
   until?: Date;
   amount?: number;
-  members?: member[];
+  members?: Member[];
 };
-export type problem = {
+export type Problem = {
   id: number;
   text: string;
 };
-export type member = {
+export type Member = {
   id: number;
-  address: number;
+  address: string;
 };
 
 export type ProposeProps = { propType: PropType; proposal: Proposal };
@@ -54,7 +54,13 @@ export type RoundedButtonProps = {
   _text?: string;
   _linkTo?: string;
   _isActive?: boolean;
-  _Icon?: React.ReactElement;
+  _icon?: React.ReactElement;
+  _iconColor?: string;
+};
+export type CircleButtonProps = {
+  _icon: React.ReactElement;
+  _iconColor?: string;
+  _scale?: number;
 };
 
 export type Problems = {
@@ -71,5 +77,5 @@ export type Problems = {
 
 export type ProgressBarProps = {
   completed: number;
-  margin: number;
+  margin?: number;
 };

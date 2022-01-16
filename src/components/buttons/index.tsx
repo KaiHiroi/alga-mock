@@ -1,14 +1,23 @@
-import { VFC } from 'react';
+import React, { VFC } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { ButtonWithIcon, RoundedButtonProps } from '../../types/Types';
+import { RoundedButtonProps, CircleButtonProps } from '../../types/Types';
 
-import { ImCross, ImHeart } from 'react-icons/im';
-import { VscDiff } from 'react-icons/vsc';
-import { BsClipboard } from 'react-icons/bs';
-import { PollingWatchKind, reduceEachTrailingCommentRange } from 'typescript';
+export const CircleButton: VFC<CircleButtonProps> = (props) => {
+  const [icon, iconColor, scale] = [
+    props._icon,
+    props._iconColor ?? '#64748b',
+    props._scale ?? 1,
+  ];
+  console.log({ iconColor, scale });
 
-const CircleButton = styled.button`
+  return (
+    <CircleButtonBase _iconColor={iconColor} _scale={scale}>
+      {icon}
+    </CircleButtonBase>
+  );
+};
+const CircleButtonBase = styled.button<Partial<CircleButtonProps>>`
   width: 3.5rem;
   height: 3.5rem;
   line-height: 4rem;
@@ -20,93 +29,47 @@ const CircleButton = styled.button`
   &:hover {
     background-color: #f8fafc;
   }
+  transform: scale(${(p) => p._scale});
+  color: ${(p) => p._iconColor};
 `;
 
-const RedImCross = styled(ImCross)`
-  color: #e55;
-`;
-
-const GreenImHeart = styled(ImHeart)`
-  color: #6edc9a;
-`;
-
-export const RedCrossCircleButton: VFC = () => {
-  return (
-    <CircleButton>
-      <RedImCross />
-    </CircleButton>
-  );
-};
-
-export const GreenHeartCircleButton: VFC = () => {
-  return (
-    <CircleButton>
-      <GreenImHeart />
-    </CircleButton>
-  );
-};
-
-export const ButtonModReq: VFC<ButtonWithIcon> = (props) => {
-  const styles = props;
-  const navigate = useNavigate();
-
-  return (
-    <button
-      onClick={() => navigate('/modreq')}
-      {...{ className: styles.button }}
-    >
-      <div {...{ className: styles.icon }}>
-        <VscDiff />
-      </div>
-      <div {...{ className: styles.text }}>modreq</div>
-    </button>
-  );
-};
-
-export const RoundedButton: VFC<RoundedButtonProps> = ({
-  _text,
-  _linkTo,
-  _isActive,
-  _Icon,
-}) => {
-  const [text, linkTo, isActive, Icon] = [
-    _text ?? '',
-    _linkTo ?? '/',
-    _isActive ?? false,
-    _Icon ?? '',
+export const RoundedButton: VFC<RoundedButtonProps> = (props) => {
+  const [text, linkTo, isActive, icon, iconColor] = [
+    props._text ?? '',
+    props._linkTo ?? '/',
+    props._isActive ?? false,
+    props._icon ?? '',
+    props._iconColor ?? '#64748b',
   ];
 
   const navigate = useNavigate();
 
-  const ButtonWrapper = styled.button`
-    display: flex;
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-    border: 0;
-    border-radius: 9999px;
-    background-color: ${isActive ? '#cffaf7' : 'white'};
-    &:hover {
-      background-color: ${isActive ? '#99f6e4' : '#f1f5f9'};
-    }
-    color: ${isActive ? '#61C2B7' : '#898989'};
-    margin: 0.75rem;
-    padding: 0.5rem 0.75rem;
-  `;
-
-  const GrayIcon = styled.div`
-    color: #64748b;
-    font-size: 1.875rem;
-    margin-right: 0.25rem;
-  `;
-
-  const TextWrapper = styled.div`
-    font-weight: ${isActive ? 'bold' : 'normal'};
-  `;
-
   return (
-    <ButtonWrapper onClick={() => navigate(linkTo)}>
-      <GrayIcon>{Icon}</GrayIcon>
-      <TextWrapper>{text}</TextWrapper>
-    </ButtonWrapper>
+    <RoundedButtonBase onClick={() => navigate(linkTo)} _isActive={isActive}>
+      <RoundedButtonIcon _iconColor={iconColor}>{icon}</RoundedButtonIcon>
+      <RoundedButtonText _isActive={isActive}>{text}</RoundedButtonText>
+    </RoundedButtonBase>
   );
 };
+const RoundedButtonBase = styled.button<Partial<RoundedButtonProps>>`
+  display: flex;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  border: 0;
+  border-radius: 9999px;
+  background-color: ${(p) => (p._isActive ? '#cffaf7' : 'white')};
+  &:hover {
+    background-color: ${(p) => (p._isActive ? '#99f6e4' : '#f1f5f9')};
+  }
+  color: ${(p) => (p._isActive ? '#61C2B7' : '#898989')};
+  margin: 0.75rem;
+  padding: 0.5rem 0.75rem;
+`;
+const RoundedButtonIcon = styled.div<Partial<RoundedButtonProps>>`
+  color: ${(p) => p._iconColor};
+  font-size: 1.875rem;
+  margin-right: 0.25rem;
+`;
+const RoundedButtonText = styled.div<Partial<RoundedButtonProps>>`
+  font-weight: ${(p) => (p._isActive ? 'bold' : 'normal')};
+`;

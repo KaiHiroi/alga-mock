@@ -19,7 +19,8 @@ const ProblemSolutions: VFC<Props> = (props) => {
         {
           id: 1,
           addingRules: '毎回Zoomに接続しながらboardを使う。Sol1',
-          subCommitteeAndBudget: '部会と予算ぶかいとよさん',
+          subCommitteeAndBudget:
+            '部会と予算ぶかいとよさん\n部会と予算ぶかいとよさん\n部会と予算ぶかいとよさん\n',
           countDislike: 0,
           countLike: 0,
         },

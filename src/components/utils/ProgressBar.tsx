@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import { ProgressBarProps as Props } from '../../types/Types';
 
 const ProgressBar: VFC<Props> = (props) => {
+  const margin = props.margin ?? 0;
   return (
-    <Wrapper margin={props.margin}>
+    <Wrapper margin={margin}>
       <Bar completed={props.completed} />
     </Wrapper>
   );

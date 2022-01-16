@@ -9,8 +9,8 @@ const App: VFC = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="modreq" element={<ModReq />} />
-      <Route path="board" element={<Board />} />
+      <Route path="/modreq" element={<ModReq />} />
+      <Route path="/board" element={<Board />} />
     </Routes>
   );
 };
