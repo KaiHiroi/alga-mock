@@ -2,10 +2,7 @@ import { VFC } from 'react';
 import styled from 'styled-components';
 
 import Header from '../Header';
-import Footer from '../Footer';
 import bgImg from '../../assets/images/algabg.png';
-
-const HomeWrapper = styled.div``;
 
 const MainWrapper = styled.main`
   height: 100vh;
@@ -20,13 +17,9 @@ const MainWrapper = styled.main`
   justify-content: center;
 `;
 
-const FooterWrapper = styled.footer`
-  background-color: limegreen;
-`;
-
 const Home: VFC = () => {
   return (
-    <HomeWrapper>
+    <>
       <Header />
       <MainWrapper>
         <div>
@@ -56,7 +49,7 @@ const Home: VFC = () => {
           <p style={{ fontSize: '2rem' }}>self-reproductive micro-public</p>
         </div>
       </MainWrapper>
-    </HomeWrapper>
+    </>
   );
 };
 

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import ProgressBar from '../utils/ProgressBar';
 import ProblemText from '../ProblemText';
-import ProblemSolutions from '../ProblemSolutions';
+import ProblemSolutionsCard from '../ProblemSolutionsCard';
 import {
   RedCrossCircleButton as DisagreeButton,
   GreenHeartCircleButton as AgreeButton,
@@ -22,20 +22,19 @@ const ProgressBarWrapper = styled.div`
 const ProblemTextWrapper = styled.div``;
 const SolutionCards = styled.div`
   flex: 1 1 0%;
-  margin: 1.5rem;
+  margin: 1rem 1.5rem 2rem;
   background-color: white;
-  display: flex;
-  flex-direction: column;
-  overflow-y: hidden;
-  overflow-x: visible;
-  filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03))
-    drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
+  /* display: flex;
+  flex-direction: column; */
+  /* overflow-y: hidden; */
+  /* filter: drop-shadow(0 8px 5px rgb(0 0 0 / 0.8)); */
+  position: relative;
 `;
 const VoteWrapper = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 0.75rem;
-  margin-bottom: 3rem;
+  padding-top: 1rem;
+  padding-bottom: 3rem;
   gap: 0 6rem;
 `;
 
@@ -53,7 +52,7 @@ const ModReq: VFC = () => {
         <ProblemText problemId={problemId} />
       </ProblemTextWrapper>
       <SolutionCards>
-        <ProblemSolutions problemId={problemId} />
+        <ProblemSolutionsCard problemId={problemId} />
       </SolutionCards>
       <VoteWrapper>
         <DisagreeButton />
