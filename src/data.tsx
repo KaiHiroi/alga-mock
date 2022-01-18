@@ -32,7 +32,7 @@ const solution1_2: Solution = {
 
 const problem1: Problem = {
   id: 1,
-  text: 'ワイワイ感のあるPTA活動のためにどうしたらいいか(problem1)',
+  text: 'ワイワイ感のあるPTA活動のためにどうしたらいいか',
 };
 export const proposal1: Proposal = {
   problem: problem1,
