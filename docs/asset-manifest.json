@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/alga-mock/static/css/main.f1de2363.css",
+    "main.js": "/alga-mock/static/js/main.43647db9.js",
+    "static/js/787.966a01e3.chunk.js": "/alga-mock/static/js/787.966a01e3.chunk.js",
+    "static/media/algabg.png": "/alga-mock/static/media/algabg.2dd1b8da41436eb7980e.png",
+    "index.html": "/alga-mock/index.html",
+    "main.f1de2363.css.map": "/alga-mock/static/css/main.f1de2363.css.map",
+    "main.43647db9.js.map": "/alga-mock/static/js/main.43647db9.js.map",
+    "787.966a01e3.chunk.js.map": "/alga-mock/static/js/787.966a01e3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f1de2363.css",
+    "static/js/main.43647db9.js"
+  ]
+}
