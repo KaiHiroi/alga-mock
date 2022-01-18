@@ -17,10 +17,14 @@ const AppFooter: VFC = () => {
     display: flex;
     justify-content: space-evenly;
     background-color: white;
+    position: relative;
   `;
-  const Divider = styled.div`
+  const Divider = styled.div<{ position: number }>`
     border: 2px solid #e2e8f0;
+    height: 60%;
     margin: 1rem 0;
+    position: absolute;
+    left: ${(p) => p.position}%;
   `;
 
   return (
@@ -31,7 +35,7 @@ const AppFooter: VFC = () => {
         _isActive={matchPath('/modreq')}
         _icon={<VscDiff />}
       />
-      <Divider />
+      <Divider position={50} />
       <RoundedButton
         _text="board"
         _linkTo="/board"

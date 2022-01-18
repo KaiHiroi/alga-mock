@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import ProgressBar from '../utils/ProgressBar';
 import ProblemText from '../ProblemText';
-import SolutionCard from '../SolutionCard';
+import SolutionCard from '../Solution';
 import AddSolution from '../AddSolution';
 import AppFooter from '../AppFooter';
 
