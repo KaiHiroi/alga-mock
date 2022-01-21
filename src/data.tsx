@@ -31,7 +31,7 @@ const solution1_2: Solution = {
 };
 
 const problem1: Problem = {
-  id: 1,
+  id: 1, // いらない？
   text: 'ワイワイ感のあるPTA活動のためにどうしたらいいか',
 };
 export const proposal1: Proposal = {

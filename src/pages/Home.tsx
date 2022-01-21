@@ -1,8 +1,8 @@
 import { VFC } from 'react';
 import styled from 'styled-components';
 
-import Header from '../Header';
-import bgImg from '../../assets/images/algabg.png';
+import Header from '../components/Header';
+import bgImg from '../assets/images/algabg.png';
 
 const MainWrapper = styled.main`
   height: 100vh;

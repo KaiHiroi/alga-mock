@@ -8,12 +8,14 @@ enum PropType {
   SUB,
 }
 export type Proposal = {
+  // id: number;
   problem: Problem;
   harm?: string;
   cause?: string;
   solutions?: Solution[];
 };
 export type Solution = {
+  id?: number;
   law?: string;
   to?: number;
   since?: Date;

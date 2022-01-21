@@ -2,71 +2,27 @@ import { VFC } from 'react';
 import styled from 'styled-components';
 import { GiCycle } from 'react-icons/gi';
 import { FaPen } from 'react-icons/fa';
-import { Solution, Proposal } from '../types/Types';
-import { proposal1 } from '../data';
+import { Solution } from '../../types/Types';
 
-type Props = {
-  solutionId: number;
-};
-
-const dummyProposal: Proposal = {
-  problem: { id: 0, text: '' },
-  harm: 'harm0',
-  cause: 'cause0',
-  solutions: [],
-};
-
-const dummySolutions: Solution[] = [
-  {
-    law: 'dummy solution',
-    to: 0,
-    since: new Date(),
-    until: new Date(),
-    amount: 0,
-    members: [],
-  },
-  {
-    law: 'dummy solution',
-    to: 0,
-    since: new Date(),
-    until: new Date(),
-    amount: 0,
-    members: [],
-  },
-];
-const currentProposal: Proposal = proposal1 ?? dummyProposal;
-
-const SolutionCard: VFC<Props> = (props) => {
-  const solutionId = props.solutionId;
-  const currentSolution: Solution =
-    currentProposal?.solutions?.[solutionId] ?? dummySolutions[0];
-  console.log(currentSolution);
-
-  const currentSolutionMember =
-    currentSolution.members?.length !== 0
-      ? currentSolution.members?.map((v) => v.address)
-      : 'なし';
-  console.log('member');
-  console.log(currentSolutionMember);
-
+const SolutionCard: VFC<Solution> = (props) => {
   return (
     <SolutionCardWrapper>
-      <SolutionId>ソリューション{solutionId + 1}</SolutionId>
+      <SolutionId>ソリューション{props.id}</SolutionId>
       <SolutionMain>
         <InnerWrapper>
           <Heading>追加するルール</Heading>
-          <Text>{nToBr(currentSolution.law ?? 'なし')}</Text>
+          <Text>{nToBr(props.law ?? 'なし')}</Text>
           <Heading>部会と予算</Heading>
           <Text>
             <div style={{ marginBottom: '1rem' }}>
               部会:&nbsp;
-              {currentSolutionMember === 'なし'
-                ? 'なし'
-                : currentSolutionMember?.join('、')}
+              {props.members?.length !== 0
+                ? props.members?.map((v) => v.address).join('、')
+                : 'なし'}
             </div>
             <div>
               予算:&nbsp;
-              {currentSolution.amount === 0 ? 'なし' : currentSolution.amount}
+              {props.amount ?? 'なし'}
             </div>
           </Text>
         </InnerWrapper>

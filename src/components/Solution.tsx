@@ -1,36 +1,47 @@
 import { VFC } from 'react';
 import styled from 'styled-components';
 
-import SolutionCard from './SolutionCard';
+import SolutionCard from './solutions/SolutionCard';
+import AddSolution from './solutions/AddSolution';
 
 import { CircleButton } from './buttons';
 import { ImCross, ImHeart } from 'react-icons/im';
 
-import { proposal1 } from '../data';
-console.log(proposal1);
+import { useQuery } from 'urql';
+import { SolutionsQuery } from '../graphql/query';
 
 const Solution: VFC = () => {
-  return (
-    <SolutionWrapper>
-      <SolutionCards>
-        <SolutionCard solutionId={0} />
+  const [result, reexecuteQuery] = useQuery({
+    query: SolutionsQuery,
+  });
+  const { data, fetching, error } = result;
+
+  if (fetching) return <AddSolution />;
+  if (error) return <p>{error.message} Solutions Data</p>;
+
+  return data.proposal.solutions.length !== 0 ? (
+    <Wrapper>
+      <StackedCards>
+        <SolutionCard {...data.proposal.solutions[0]} />
         <DummyCard n={1}>&nbsp;</DummyCard>
         <DummyCard n={2}>&nbsp;</DummyCard>
-      </SolutionCards>
+      </StackedCards>
       <VoteWrapper>
         <CircleButton _icon={<ImCross />} _iconColor="#e55" />
         <CircleButton _icon={<ImHeart />} _iconColor="#6edc9a" />
       </VoteWrapper>
-    </SolutionWrapper>
+    </Wrapper>
+  ) : (
+    <AddSolution />
   );
 };
 
-const SolutionWrapper = styled.div`
+const Wrapper = styled.div`
   flex: 1 1 0%;
   display: flex;
   flex-direction: column;
 `;
-const SolutionCards = styled.div`
+const StackedCards = styled.div`
   flex: 1 1 0%;
   margin: 0 1.5rem;
   padding-top: 1rem;
