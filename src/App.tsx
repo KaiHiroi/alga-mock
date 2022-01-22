@@ -17,8 +17,12 @@ const App: VFC = () => {
     <Provider value={client}>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/modreq" element={<ModReq />} />
-        <Route path="/board" element={<Board />} />
+        <Route path="/modreq" element={<ModReq />}>
+          <Route path=":proposalId" element={<ModReq />} />
+        </Route>
+        <Route path="/board" element={<Board />}>
+          <Route path=":proposalId" element={<Board />} />
+        </Route>
       </Routes>
     </Provider>
   );

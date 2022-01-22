@@ -9,7 +9,6 @@ export const CircleButton: VFC<CircleButtonProps> = (props) => {
     props._iconColor ?? '#64748b',
     props._scale ?? 1,
   ];
-  console.log({ iconColor, scale });
 
   return (
     <CircleButtonBase _iconColor={iconColor} _scale={scale}>

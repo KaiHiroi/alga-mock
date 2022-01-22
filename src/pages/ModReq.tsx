@@ -2,8 +2,8 @@ import { VFC } from 'react';
 import styled from 'styled-components';
 
 import ProgressBar from '../components/utils/ProgressBar';
-import ProblemText from '../components/ProblemText';
-import Solution from '../components/Solution';
+import ProblemText from '../components/solutions/ProblemText';
+import Solution from '../components/solutions/Solution';
 import AppFooter from '../components/AppFooter';
 
 const ModReqWrapper = styled.div`

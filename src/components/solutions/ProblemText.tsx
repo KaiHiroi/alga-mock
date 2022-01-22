@@ -1,7 +1,7 @@
 import { VFC } from 'react';
 import styled from 'styled-components';
 import { useQuery } from 'urql';
-import { ProblemTextQuery } from '../graphql/query';
+import { ProblemTextQuery } from '../../graphql/query';
 
 const ProblemTextFetch: VFC<{ className?: string }> = ({ className }) => {
   const [result, reexecuteQuery] = useQuery({

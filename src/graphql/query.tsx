@@ -33,9 +33,9 @@ export const ProblemTextQuery = `
   }
 `;
 
-export const SolutionsQuery = `
+export const SolutionsQuery = (proposalId: number) => `
   query {
-    proposal(id: 1){
+    proposal(id: ${proposalId}){
       solutions{
         id
         law

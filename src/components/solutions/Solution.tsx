@@ -1,18 +1,21 @@
 import { VFC } from 'react';
 import styled from 'styled-components';
+import { useParams } from 'react-router-dom';
 
-import SolutionCard from './solutions/SolutionCard';
-import AddSolution from './solutions/AddSolution';
+import SolutionCard from './SolutionCard';
+import AddSolution from './AddSolution';
 
-import { CircleButton } from './buttons';
+import { CircleButton } from '../buttons';
 import { ImCross, ImHeart } from 'react-icons/im';
 
 import { useQuery } from 'urql';
-import { SolutionsQuery } from '../graphql/query';
+import { SolutionsQuery } from '../../graphql/query';
 
 const Solution: VFC = () => {
+  const proposalId = parseInt(useParams().proposalId ?? '0');
+
   const [result, reexecuteQuery] = useQuery({
-    query: SolutionsQuery,
+    query: SolutionsQuery(proposalId),
   });
   const { data, fetching, error } = result;
 
