@@ -1,6 +1,6 @@
-import { VFC } from 'react';
+import { useState, VFC } from 'react';
 import styled from 'styled-components';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import SolutionCard from './SolutionCard';
 import AddSolution from './AddSolution';
@@ -12,6 +12,15 @@ import { useQuery } from 'urql';
 import { SolutionsQuery } from '../../graphql/query';
 
 const Solution: VFC = () => {
+  const [count, setCount] = useState(0);
+  const increment = () => setCount((c) => c + 1);
+  const [voteFlag, setVoteFlag] = useState(false);
+  const vote = () => setVoteFlag(true);
+  const reset = () => {
+    setCount(0);
+    setVoteFlag(false);
+  };
+
   const proposalId = parseInt(useParams().proposalId ?? '0');
 
   const [result, reexecuteQuery] = useQuery({
@@ -25,17 +34,42 @@ const Solution: VFC = () => {
   return data.proposal.solutions.length !== 0 ? (
     <Wrapper>
       <StackedCards>
-        <SolutionCard {...data.proposal.solutions[0]} />
-        <DummyCard n={1}>&nbsp;</DummyCard>
-        <DummyCard n={2}>&nbsp;</DummyCard>
+        <SolutionCard
+          voteFlag={voteFlag}
+          solution={data.proposal.solutions[count]}
+        />
+        <DummyCard key="1" n={1}>
+          &nbsp;
+        </DummyCard>
+        <DummyCard key="2" n={2}>
+          &nbsp;
+        </DummyCard>
       </StackedCards>
       <VoteWrapper>
-        <CircleButton _icon={<ImCross />} _iconColor="#e55" />
-        <CircleButton _icon={<ImHeart />} _iconColor="#6edc9a" />
+        <CircleButton _iconColor="#e55" onClick={increment}>
+          <ImCross />
+        </CircleButton>
+        <CircleButton _iconColor="#6edc9a" onClick={vote}>
+          <ImHeart />
+        </CircleButton>
       </VoteWrapper>
+      <StyledMockController
+        count={count}
+        voteFlag={voteFlag}
+        reset={reset}
+        proposalId={proposalId}
+      />
     </Wrapper>
   ) : (
-    <AddSolution />
+    <>
+      <StyledMockController
+        count={count}
+        voteFlag={voteFlag}
+        reset={reset}
+        proposalId={proposalId}
+      />
+      <AddSolution />
+    </>
   );
 };
 
@@ -64,6 +98,26 @@ const DummyCard = styled.div<{ n: number }>`
   left: ${(p) => p.n * 1.5}%;
   bottom: ${(p) => -p.n * 2.5}%;
   box-shadow: 0 5px 15px #ddd;
+`;
+
+const MockController: VFC<any> = ({ className, ...props }) => {
+  return (
+    <div className={className}>
+      <div>
+        count:{props.count}, vote:{props.voteFlag}
+      </div>
+      <Link to={`${props.proposalId - 1}`}>prev</Link>
+      <button onClick={props.reset}>reset</button>
+      <Link to={`${props.proposalId + 1}`}>next</Link>
+    </div>
+  );
+};
+const StyledMockController = styled(MockController)`
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+  background-color: lime;
 `;
 
 export default Solution;

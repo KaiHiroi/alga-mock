@@ -1,7 +1,6 @@
 import { VFC } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { createClient, Provider, defaultExchanges } from 'urql';
-import { devtoolsExchange } from '@urql/devtools';
+import { createClient, Provider } from 'urql';
 
 import Home from './pages/Home';
 import ModReq from './pages/ModReq';
@@ -9,7 +8,6 @@ import Board from './pages/Board';
 
 const client = createClient({
   url: 'http://localhost:4000/graphql',
-  exchanges: [devtoolsExchange, ...defaultExchanges],
 });
 
 const App: VFC = () => {
@@ -19,10 +17,12 @@ const App: VFC = () => {
         <Route path="/" element={<Home />} />
         <Route path="/modreq" element={<ModReq />}>
           <Route path=":proposalId" element={<ModReq />} />
+          <Route path=":proposalId/new" element={<ModReq />} />
         </Route>
         <Route path="/board" element={<Board />}>
           <Route path=":proposalId" element={<Board />} />
         </Route>
+        <Route path="*" element={<Home />} />
       </Routes>
     </Provider>
   );

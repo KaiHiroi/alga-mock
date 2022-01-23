@@ -4,33 +4,38 @@ import { GiCycle } from 'react-icons/gi';
 import { FaPen } from 'react-icons/fa';
 import { Solution } from '../../types/Types';
 
-const SolutionCard: VFC<Solution> = (props) => {
+const SolutionCard: VFC<{ voteFlag: boolean; solution: Solution }> = ({
+  voteFlag,
+  solution,
+}) => {
   return (
     <SolutionCardWrapper>
-      <SolutionId>ソリューション{props.id}</SolutionId>
+      <SolutionId>
+        {voteFlag
+          ? 'あなたはこの解決策に投票しています'
+          : `ソリューション${solution.id}`}
+      </SolutionId>
       <SolutionMain>
         <InnerWrapper>
           <Heading>追加するルール</Heading>
-          <Text>{nToBr(props.law ?? 'なし')}</Text>
+          <PreWrapText>{solution.law ?? 'なし'}</PreWrapText>
           <Heading>部会と予算</Heading>
           <Text>
             <div style={{ marginBottom: '1rem' }}>
               部会:&nbsp;
-              {props.members?.length !== 0
-                ? props.members?.map((v) => v.address).join('、')
+              {solution.members?.length !== 0
+                ? solution.members?.map((v) => v.address).join('、')
                 : 'なし'}
             </div>
             <div>
               予算:&nbsp;
-              {props.amount ?? 'なし'}
+              {solution.amount ?? 'なし'}
             </div>
           </Text>
         </InnerWrapper>
       </SolutionMain>
       <SolutionStatus>
-        {/* <StyledCycle /> */}
-        <StyledPen />
-        この解決策をベースに修正提案
+        {voteFlag ? <StyledCycle /> : <StyledPen />}
       </SolutionStatus>
     </SolutionCardWrapper>
   );
@@ -101,8 +106,11 @@ const Text = styled.div`
   color: #333;
   margin-bottom: 3rem;
 `;
-const nToBr = (txt: string) => {
-  return txt.split(/(\n)/g).map((t) => (t === '\n' ? <br /> : t));
-};
+const PreWrapText = styled.div`
+  padding-left: 1rem;
+  color: #333;
+  margin-bottom: 3rem;
+  white-space: pre-wrap;
+`;
 
 export default SolutionCard;

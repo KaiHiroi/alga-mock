@@ -23,9 +23,9 @@ export const ProposalQuery = `
   }
 `;
 
-export const ProblemTextQuery = `
+export const ProblemTextQuery = (proposalId: number) => `
   query {
-    proposal(id: 1){
+    proposal(id: ${proposalId}){
       problem{
         text
       }

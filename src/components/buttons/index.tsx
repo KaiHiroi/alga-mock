@@ -4,15 +4,18 @@ import { useNavigate } from 'react-router-dom';
 import { RoundedButtonProps, CircleButtonProps } from '../../types/Types';
 
 export const CircleButton: VFC<CircleButtonProps> = (props) => {
-  const [icon, iconColor, scale] = [
-    props._icon,
-    props._iconColor ?? '#64748b',
-    props._scale ?? 1,
-  ];
-
+  const navigate = useNavigate();
+  const [iconColor, scale] = [props._iconColor ?? '#64748b', props._scale ?? 1];
   return (
-    <CircleButtonBase _iconColor={iconColor} _scale={scale}>
-      {icon}
+    <CircleButtonBase
+      onClick={() => {
+        props.onClick !== undefined && props.onClick();
+        props._linkTo !== undefined && navigate(props._linkTo);
+      }}
+      _iconColor={iconColor}
+      _scale={scale}
+    >
+      {props.children}
     </CircleButtonBase>
   );
 };

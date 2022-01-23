@@ -1,11 +1,13 @@
 import { VFC } from 'react';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { useQuery } from 'urql';
 import { ProblemTextQuery } from '../../graphql/query';
 
 const ProblemTextFetch: VFC<{ className?: string }> = ({ className }) => {
+  const proposalId = parseInt(useParams().proposalId ?? '0');
   const [result, reexecuteQuery] = useQuery({
-    query: ProblemTextQuery,
+    query: ProblemTextQuery(proposalId),
   });
   const { data, fetching, error } = result;
 

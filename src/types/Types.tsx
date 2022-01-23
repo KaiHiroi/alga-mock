@@ -1,3 +1,5 @@
+import { ReactChildren } from 'react';
+
 // Types from Alga
 enum PropType {
   ACK,
@@ -60,9 +62,11 @@ export type RoundedButtonProps = {
   _iconColor?: string;
 };
 export type CircleButtonProps = {
-  _icon: React.ReactElement;
   _iconColor?: string;
   _scale?: number;
+  _linkTo?: any;
+  onClick?: () => void;
+  children?: React.ReactElement;
 };
 
 export type Problems = {

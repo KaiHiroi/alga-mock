@@ -16,7 +16,7 @@ const Header: VFC = () => {
     <HeaderWrapper>
       <div>Alga LOGO</div>
       <Nav>
-        <RoundedButton _text="Launch App" _linkTo="/modreq" />
+        <RoundedButton _text="Launch App" _linkTo="/modreq/1" />
       </Nav>
     </HeaderWrapper>
   );
