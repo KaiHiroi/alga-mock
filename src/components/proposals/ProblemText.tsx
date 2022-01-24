@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'urql';
 import { ProblemTextQuery } from '../../graphql/query';
-import { MarginedWrapper } from '../Wrapper';
+import { MarginedWrapper, InnerWrapper } from '../Wrapper';
 
 const ProblemText: VFC = () => {
   return (
@@ -16,10 +16,7 @@ const ProblemText: VFC = () => {
   );
 };
 
-const ProblemTextBox = styled.div`
-  text-align: left;
-  width: fit-content;
-  margin: 0 auto;
+const ProblemTextBox = styled(InnerWrapper)`
   font-size: 1.2rem;
   font-weight: bold;
   color: #444;

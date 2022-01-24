@@ -6,6 +6,7 @@ import { createClient, Provider } from 'urql';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { RecoilRoot } from 'recoil';
 
 const client = createClient({
   url: 'http://localhost:4000/graphql',
@@ -14,9 +15,11 @@ const client = createClient({
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter basename={process.env.PUBLIC_URL}>
-      <Provider value={client}>
-        <App />
-      </Provider>
+      <RecoilRoot>
+        <Provider value={client}>
+          <App />
+        </Provider>
+      </RecoilRoot>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root'),

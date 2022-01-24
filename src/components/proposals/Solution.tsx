@@ -1,17 +1,21 @@
 import { VFC } from 'react';
 import styled from 'styled-components';
 
+import { ElasticWrapper as SolutionWrapper, StackedCards } from '../Wrapper';
 import SolutionCard from './SolutionCard';
+import Vote from '../proposals/Vote';
 import AddSolution from './AddSolution';
 
 import { useQuery } from 'urql';
 import { SolutionsQuery } from '../../graphql/query';
+import { useRecoilValue } from 'recoil';
+import { solutionIdState } from '../../atoms/modreq';
 
 const Solution: VFC<{
   proposalId: number;
-  voteFlag: boolean;
-  count: number;
 }> = (props) => {
+  const solutionId = useRecoilValue(solutionIdState);
+
   const [result, reexecuteQuery] = useQuery({
     query: SolutionsQuery(props.proposalId),
   });
@@ -21,12 +25,9 @@ const Solution: VFC<{
   if (error) return <p>{error.message} Solutions Data</p>;
 
   return data.proposal.solutions.length !== 0 ? (
-    <Wrapper>
+    <SolutionWrapper>
       <StackedCards>
-        <SolutionCard
-          voteFlag={props.voteFlag}
-          solution={data.proposal.solutions[props.count]}
-        />
+        <SolutionCard solution={data.proposal.solutions[solutionId]} />
         <DummyCard key="1" n={1}>
           &nbsp;
         </DummyCard>
@@ -34,25 +35,13 @@ const Solution: VFC<{
           &nbsp;
         </DummyCard>
       </StackedCards>
-    </Wrapper>
+      <Vote />
+    </SolutionWrapper>
   ) : (
-    <>
-      <AddSolution />
-    </>
+    <AddSolution />
   );
 };
 
-const Wrapper = styled.div`
-  flex: 1 1 0%;
-  display: flex;
-  flex-direction: column;
-`;
-const StackedCards = styled.div`
-  flex: 1 1 0%;
-  margin: 0 1.5rem;
-  padding-top: 1rem;
-  position: relative;
-`;
 const DummyCard = styled.div<{ n: number }>`
   position: absolute;
   background-color: white;

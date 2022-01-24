@@ -1,7 +1,10 @@
 import { VFC } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { RoundedButtonProps, CircleButtonProps } from '../../types/Types';
+import {
+  RoundedButtonProps,
+  CircleButtonProps,
+} from '../../types/ComponentTypes';
 
 export const CircleButton: VFC<CircleButtonProps> = (props) => {
   const navigate = useNavigate();
