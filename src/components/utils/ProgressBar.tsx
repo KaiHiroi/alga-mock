@@ -1,11 +1,10 @@
 import { VFC } from 'react';
 import styled from 'styled-components';
-import { ProgressBarProps as Props } from '../../types/Types';
+import { ProgressBarProps } from '../../types/ComponentTypes';
 
-const ProgressBar: VFC<Props> = (props) => {
-  const margin = props.margin ?? 0;
+const ProgressBar: VFC<ProgressBarProps> = (props) => {
   return (
-    <Wrapper margin={margin}>
+    <Wrapper margin={props.margin ?? 0}>
       <Bar completed={props.completed} />
     </Wrapper>
   );

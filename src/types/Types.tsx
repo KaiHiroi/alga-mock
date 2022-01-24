@@ -80,8 +80,3 @@ export type Problems = {
     countLike: number;
   }[];
 };
-
-export type ProgressBarProps = {
-  completed: number;
-  margin?: number;
-};

@@ -1,14 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import { createClient, Provider } from 'urql';
+
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+const client = createClient({
+  url: 'http://localhost:4000/graphql',
+});
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter basename={process.env.PUBLIC_URL}>
-      <App />
+      <Provider value={client}>
+        <App />
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root'),

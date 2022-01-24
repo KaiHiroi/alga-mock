@@ -2,7 +2,7 @@ import { VFC } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { RoundedButton } from './buttons';
+import { RoundedButton } from '../buttons';
 
 import { BsClipboard } from 'react-icons/bs';
 import { VscDiff } from 'react-icons/vsc';
